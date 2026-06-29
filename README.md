@@ -1,6 +1,15 @@
 # 💰 Expense Tracker
 
-A modern, user-friendly expense tracking application built to help you manage your finances efficiently. Track, categorize, and analyze your spending habits with ease.
+![JavaScript](https://img.shields.io/badge/JavaScript-63.1%25-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![CSS](https://img.shields.io/badge/CSS-34%25-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![HTML](https://img.shields.io/badge/HTML-2.9%25-E34C26?style=for-the-badge&logo=html5&logoColor=white)
+
+![MongoDB](https://img.shields.io/badge/MongoDB-13B6A8?style=for-the-badge&logo=mongodb&logoColor=white)
+![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
+
+A modern, user-friendly MERN stack expense tracking application built to help you manage your finances efficiently. Track, categorize, and analyze your spending habits with ease.
 
 ## 🌐 Live Demo
 
@@ -42,7 +51,7 @@ A modern, user-friendly expense tracking application built to help you manage yo
 ### Backend
 - **Node.js** - Runtime environment
 - **Express** - Web framework
-- **Database** - MongoDB
+- **MongoDB** - NoSQL database
 
 ### Deployment
 - **Render** - Hosting platform
@@ -76,6 +85,7 @@ Before you begin, ensure you have the following installed:
 - **Node.js** (v14 or higher)
 - **npm** or **yarn** package manager
 - **Git**
+- **MongoDB** (local or Atlas)
 
 ### Installation
 
