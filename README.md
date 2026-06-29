@@ -42,7 +42,7 @@ A modern, user-friendly expense tracking application built to help you manage yo
 ### Backend
 - **Node.js** - Runtime environment
 - **Express** - Web framework
-- **Database** - (Add your database info)
+- **Database** - MongoDB
 
 ### Deployment
 - **Render** - Hosting platform
