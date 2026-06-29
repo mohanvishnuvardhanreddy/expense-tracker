@@ -7,8 +7,7 @@ function App() {
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('Food');
 
-  const API_URL = 'http://localhost:5000/api/expenses';
-
+const API_URL = '/api/expenses';
   // Fetch expenses on page load
   useEffect(() => {
     fetchExpenses();
