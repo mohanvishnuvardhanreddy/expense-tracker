@@ -50,7 +50,6 @@ app.delete('/api/expenses/:id', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 5000;
 const path = require('path');
 
 // 1. Serve static files from the React frontend build directory
@@ -60,4 +59,6 @@ app.use(express.static(path.join(__dirname, '../frontend/dist')));
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
 });
+const PORT = process.env.PORT || 5000;
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
