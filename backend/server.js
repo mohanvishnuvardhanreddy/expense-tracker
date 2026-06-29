@@ -4,12 +4,11 @@ const cors = require('cors');
 require('dotenv').config();
 
 const Expense = require('./models/Expense');
-
 const app = express();
 
 // Middleware
 app.use(cors());
-app.use(express.json()); // Allows us to parse JSON bodies
+app.use(express.json());
 
 // Database Connection
 mongoose.connect(process.env.MONGO_URI)
@@ -28,11 +27,16 @@ app.get('/api/expenses', async (req, res) => {
   }
 });
 
-// 2. POST a new expense
+// 2. POST a new expense (Accepts custom input dates)
 app.post('/api/expenses', async (req, res) => {
-  const { title, amount, category } = req.body;
+  const { title, amount, category, date } = req.body;
   try {
-    const newExpense = new Expense({ title, amount, category });
+    const newExpense = new Expense({ 
+      title, 
+      amount, 
+      category, 
+      date: date ? new Date(date) : undefined 
+    });
     const savedExpense = await newExpense.save();
     res.status(201).json(savedExpense);
   } catch (err) {
@@ -40,27 +44,27 @@ app.post('/api/expenses', async (req, res) => {
   }
 });
 
-// 3. DELETE an expense
+// 3. DELETE an expense by ID
 app.delete('/api/expenses/:id', async (req, res) => {
   try {
     await Expense.findByIdAndDelete(req.params.id);
-    res.json({ success: true, message: "Expense deleted" });
+    res.json({ success: true, message: "Expense deleted successfully" });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
 });
 
-// --- INTEGRATION STEP ---
+// --- FULL-STACK INTEGRATION STATIC MIDDLEWARE ---
 const path = require('path');
 
-// 1. Serve static files from the React frontend build directory
+// Serve production assets from the compiled React app
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
-// 2. CHANGED: Catch-all fallback using app.use instead of app.get('*')
+// Fallback routing handler for unified app delivery
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
 });
 
-// --- START SERVER ---
+// Start listening
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
