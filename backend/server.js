@@ -50,15 +50,17 @@ app.delete('/api/expenses/:id', async (req, res) => {
   }
 });
 
+// --- INTEGRATION STEP ---
 const path = require('path');
 
 // 1. Serve static files from the React frontend build directory
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
-// 2. Handle any page requests by pointing them to the React index.html file
-app.get('*', (req, res) => {
+// 2. CHANGED: Catch-all fallback using app.use instead of app.get('*')
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
 });
-const PORT = process.env.PORT || 5000;
 
+// --- START SERVER ---
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
